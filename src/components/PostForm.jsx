@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import { newPost } from "../actions/postAction";
 const PostForm = (props) => {
   const initialState = { title: "", body: "" };
@@ -10,14 +10,14 @@ const PostForm = (props) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const post = {
       title: state.body,
       body: state.title,
     };
-    await props.newPost(post);
+    props.newPost(post);
     setState(initialState);
   };
 

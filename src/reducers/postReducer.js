@@ -25,7 +25,10 @@ export default (state = initialState, action) => {
       };
     }
     case ADD_POST_TO_LIST: {
-      return { ...state, posts: action.payload };
+      return {
+        ...state,
+        posts: action.payload,
+      };
     }
     default:
       return state;

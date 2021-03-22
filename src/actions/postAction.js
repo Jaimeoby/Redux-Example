@@ -35,9 +35,8 @@ export const newPost = (postData) => (dispatch) => {
 };
 
 export const addPost = (post, posts) => (dispatch) => {
-  posts.unshift(post);
   dispatch({
     type: ADD_POST_TO_LIST,
-    payload: posts,
+    payload: [post, ...posts],
   });
 };
