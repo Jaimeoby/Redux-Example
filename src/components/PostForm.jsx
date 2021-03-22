@@ -10,14 +10,15 @@ const PostForm = (props) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const post = {
       title: state.body,
       body: state.title,
     };
-    props.newPost(post);
+    await props.newPost(post);
+    setState(initialState);
   };
 
   return (
