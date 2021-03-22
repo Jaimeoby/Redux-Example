@@ -10,26 +10,30 @@ const Posts = (props) => {
   // 2. empty array, updates once on initial render and unmount
   // 3. array with specified state, updates whenever specified state changes and unmounts
 
+  const { newPost, fetchPost, posts, addPost } = props; //destructured props
   useEffect(() => {
-    props.fetchPost();
-  }, []);
+    fetchPost();
+  }, [fetchPost]);
+
   const isFirstRun = useRef(true);
   useEffect(() => {
     if (isFirstRun.current) {
       isFirstRun.current = false;
       return;
     }
-    props.addPost(props.newPost, props.posts);
-  }, [props.newPost]);
+    props.addPost(newPost, posts);
+  }, [newPost, addPost]);
+
   return (
     <div>
-      {props.posts.map((post) => {
+      {posts.map((post) => {
         return <Post key={post.id} title={post.title} body={post.body} />;
       })}
     </div>
   );
 };
 
+// explicit type check
 Posts.propType = {
   posts: PropTypes.array.isRequired,
   fetchPost: PropTypes.func.isRequired,

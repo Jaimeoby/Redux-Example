@@ -14,8 +14,8 @@ const PostForm = (props) => {
     e.preventDefault();
 
     const post = {
-      title: state.body,
-      body: state.title,
+      title: state.title,
+      body: state.body,
     };
     props.newPost(post);
     setState(initialState);
